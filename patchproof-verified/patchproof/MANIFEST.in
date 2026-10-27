@@ -1,0 +1,14 @@
+include LICENSE
+include README.md
+include CONTRIBUTING.md
+include SECURITY.md
+include SKILL.md
+include MANIFEST.in
+include .gitignore
+
+recursive-include src/patchproof *.py
+recursive-include tests *.py *.json *.toml *.txt
+recursive-include scripts *.py
+recursive-include examples *
+recursive-include references *
+recursive-include templates *

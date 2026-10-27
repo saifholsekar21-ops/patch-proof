@@ -1,0 +1,51 @@
+# PatchProof example configuration.
+# Validate with:  patchproof config validate --config examples/patchproof.example.toml
+#
+# All check commands are argument arrays (TOML arrays of strings). There is
+# NO shell interpretation: no `&&`, no pipes, no environment expansion.
+# Custom checks are executable code; define them only from trusted sources.
+
+[checks]
+# Categories drive the overall result only when they are "required".
+# "optional" checks are always visible in the report but never turn a
+# passing result into a failure by themselves.
+required = ["tests", "secrets"]
+optional = ["lint", "typecheck", "deps"]
+
+# Explicit command overrides take precedence over detected tooling.
+# [checks.tests]
+# command = ["python", "-m", "pytest", "-q"]
+# [checks.lint]
+# command = ["python", "-m", "ruff", "check", "."]
+# [checks.typecheck]
+# command = ["python", "-m", "mypy", "."]
+# [checks.deps]
+# command = ["python", "-m", "pip_audit", "-r", "requirements.txt"]
+
+# Custom checks run in addition to the built-in categories, in the order
+# listed here.
+# [[checks.custom]]
+# name = "license-headers"
+# command = ["python", "scripts/check_license_headers.py"]
+# required = false
+# timeout_s = 60
+
+[limits]
+timeout_s = 300            # per-check wall-clock limit
+output_limit_bytes = 32768 # per-stream capture limit (bounded memory)
+
+[git]
+# Change selection: working, staged, unstaged, untracked, committed, all, none.
+selection = "working"
+# base = "main"
+# head = "HEAD"
+
+[report]
+format = "json"     # json, markdown, or text
+destination = ""    # empty writes to stdout; set a path to write a file
+redact = true       # mask credential patterns in captured output and reports
+
+[secrets]
+enabled = true
+max_files = 2000
+max_file_bytes = 1048576

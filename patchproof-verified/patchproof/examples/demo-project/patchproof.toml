@@ -1,0 +1,12 @@
+# Minimal configuration for examples/demo-project.
+
+[checks]
+required = ["secrets"]
+optional = []
+
+# The demo has no third-party test runner; stdlib unittest is enough.
+[[checks.custom]]
+name = "unit-tests"
+command = ["python", "-m", "unittest", "discover", "-q"]
+required = true
+timeout_s = 60

@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.1",
+  "patchproof_version": "1.1.0",
+  "task_id": "PP-DEMO-001",
+  "task_description": "Demonstrate patchproof verify on the bundled demo project",
+  "generated_at": "2026-10-26T18:02:28+00:00",
+  "repository": {
+    "path": "C:\\Users\\HP\\Documents\\Qoder\\2026-10-26\\996ce3be\\patchproof\\examples\\demo-project",
+    "revision": null,
+    "branch": null,
+    "dirty": null,
+    "detached": false
+  },
+  "selection_policy": "none",
+  "changed_files": [],
+  "findings": [],
+  "checks": [
+    {
+      "id": "secrets",
+      "tool": "patchproof-secrets",
+      "category": "secrets",
+      "command": "internal repository scan (regex patterns; see SECURITY.md)",
+      "status": "passed",
+      "required": true,
+      "exit_code": null,
+      "duration_s": null,
+      "summary": "",
+      "evidence": [
+        "no credential patterns found in scanned files"
+      ]
+    },
+    {
+      "id": "custom:unit-tests",
+      "tool": "python",
+      "category": "custom",
+      "command": "C:\\Users\\HP\\Documents\\Qoder\\2026-10-26\\996ce3be\\patchproof\\.venv\\Scripts\\python.exe -m unittest discover -q",
+      "status": "passed",
+      "required": true,
+      "exit_code": 0,
+      "duration_s": 0.184,
+      "summary": "",
+      "evidence": [
+        "----------------------------------------------------------------------",
+        "Ran 1 test in 0.000s",
+        "OK"
+      ]
+    }
+  ],
+  "skipped_checks": [],
+  "execution_errors": [],
+  "overall_status": "passed",
+  "limitations": [
+    "'C:\\\\Users\\\\HP\\\\Documents\\\\Qoder\\\\2026-10-26\\\\996ce3be\\\\patchproof\\\\examples\\\\demo-project' is not a git repository; no change analysis performed",
+    "checks execute with the invoking user's privileges; no sandboxing is performed (run PatchProof inside an isolated environment for untrusted code)"
+  ],
+  "conclusion": "",
+  "changes": []
+}
